@@ -5,9 +5,9 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/faiface/pixel/text"
-	"golang.org/x/image/colornames"
 	"golang.org/x/image/font/basicfont"
 	"image"
+	"image/color"
 	_ "image/png"
 	"math/rand"
 	"os"
@@ -64,8 +64,8 @@ func run() {
 	countertext := text.New(pixel.V(200, 200), atlas)
 
 	//text color
-	redbar.Color = colornames.Red
-	countertext.Color = colornames.Black
+	redbar.Color = color.RGBA{R: 0xff, A: 0xff}
+	countertext.Color = color.Black
 
 	// printing the name of the game
 	fmt.Fprintln(redbar, "redbar")
@@ -113,7 +113,7 @@ func run() {
 	// main loop
 	for !win.Closed() {
 		// set a background color and clear screen
-		win.Clear(colornames.Grey)
+		win.Clear(color.RGBA{R: 0x80, G: 0x80, B: 0x80, A: 0xff})
 
 		// scale, move and draw redbarrelsprite
 		redbarrelmat := pixel.IM
